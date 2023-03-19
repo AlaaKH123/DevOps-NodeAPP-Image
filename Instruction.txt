@@ -1,0 +1,26 @@
+1st etape : creation de fichier Dockerfile : $touch Dockerfile
+2 éme etape :Code docker file :
+FROM node
+WORKDIR /app3
+COPY . /app3
+RUN npm install
+EXPOSE 3000
+CMD ["node","server.js"]
+puis : $docker build .
+3 éme etape : $docker run -p 3010:3000 --name NODE-APP sha256:610a41abbb57adf17cce176addf415e5366322305afb7805bd6fa023a234892f
+je stop le container :
+$docker stop NODE-APP
+$docker ps // affiche les ID copier ID puis start detached mode:
+$docker start dbd15e3e1959cd8c01ef3432baeb02080344f7604fe80dbe57ff7d922e1b5f7e
+$docker rm NODE-APP  : je peux pas faire le docker prune pour supprimer tous les sttoped container par ce que j ai des containers qui sont stopés mais j ai les besion pour mon PFA
+4émé etape :
+$docker build -t nodeimage .
+$ docker images
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+nodeimage                     latest    610a41abbb57   24 minutes ago   1GB
+$ docker build -t nodeimage:V1 .   //pour donner le tag qui est V1
+REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
+nodeimage                     V1        610a41abbb57   26 minutes ago   1GB
+le champ TAG devient V1 qui a été Latest par dafaut
+last etape :
+docker run -p 3010:3000 --rm --name NODE-APP nodeimage:V1
