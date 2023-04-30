@@ -1,10 +1,11 @@
-# DevOps-NodeAPP 
-Instrucation to run the image : 
- CD "repo where the files are set"
+# Instrucation to run the image : 
+
+$CD "repo where the files are set"
  
 $ docker build -t nodeimage:V1 .   // to give the image V1 as a tag 
 
 $ docker images
+
 REPOSITORY                    TAG       IMAGE ID       CREATED          SIZE
 nodeimage                     V1        610a41abbb57   26 minutes ago   1GB
 
